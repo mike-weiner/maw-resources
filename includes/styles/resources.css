@@ -33,7 +33,7 @@
 }
 
 .maw_container .maw_title {
-    width: 45%;
+    width: 50%;
     float: left;
 
 }
@@ -42,6 +42,11 @@
     width: 25%;
     float: left;
     min-height: 30px;
+}
+
+.maw_empty_message {
+    font-weight: bold !important;
+    font-style: italic !important;
 }
 
 /*-----------------------------------------------------------------------------------*/
