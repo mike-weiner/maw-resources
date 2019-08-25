@@ -8,7 +8,9 @@
 }
 
 .maw_header {
-    border-bottom: none;
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+    border-bottom-color: #666;
 }
 
 .maw_container .maw_header .maw_date, .maw_container .maw_header .maw_title,
