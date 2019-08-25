@@ -116,7 +116,7 @@ function maw_resources_posts_shortcode($atts) {
     );
 
     $output = '';
-    $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_date">Date</div><div class="maw_title">Resource</div><div class="maw_link">Content</div><br class="maw_clear">';
+    $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_date">Date</div><div class="maw_title">Resource</div><div class="maw_link">Content</div><br class="maw_clear"></div>';
 
     $query = new WP_Query( $args );
     if( $query->have_posts() ){
@@ -124,7 +124,7 @@ function maw_resources_posts_shortcode($atts) {
             $query->the_post();
             $output .= '<div class="maw_item"><div class="maw_date">'. get_the_date('m-d-Y') .'</div><div class="maw_title"><b>'. get_the_title() .'</b></div><div class="maw_link"><a href="'. get_the_permalink() .'" title="View File" target="_blank">View File</a><br></div><br class="maw_clear"></div>';
         }
-        $output .= '</div></div>';
+        $output .= '</div>';
     }
     wp_reset_postdata();
 
