@@ -1,0 +1,66 @@
+.maw_clear {
+    clear: both;
+}
+
+.maw_container {
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.maw_header {
+    border-bottom: none;
+}
+
+.maw_container .maw_header .maw_date, .maw_container .maw_header .maw_title,
+.maw_container .maw_header .maw_link {
+    font-size: 20px;
+    margin: 0;
+    padding: 5px 0;
+    text-align: left;
+}
+
+.maw_container .maw_item {
+    text-align: left;
+    padding: 15px 4px 5px 4px;
+    border-bottom: 1px dotted #143D8D;
+}
+
+.maw_container .maw_date {
+    width: 25%;
+    float: left;
+}
+
+.maw_container .maw_title {
+    width: 45%;
+    float: left;
+
+}
+
+.maw_container .maw_link {
+    width: 25%;
+    float: left;
+    min-height: 30px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Mobile Responsive CSS */
+/*-----------------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 450px) {
+
+    .maw_container .maw_date {
+        width: 25%;
+        float: left;
+    }
+
+    .maw_container .maw_title {
+        width: 45%;
+        float: left;
+    }
+
+    .maw_container .maw_link {
+        width: 20%;
+        float: left;
+        min-height: 30px;
+    }
+}
