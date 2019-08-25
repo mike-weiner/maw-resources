@@ -61,8 +61,9 @@ function maw_resources_custom_post_type() {
         'show_in_menu' => true,
         'supports' => $supports,
         'has_archive' => true,
-        'rewrite' => array('slug' => 'dev-notes'),
+        'rewrite' => array('slug' => 'maw-resources'),
         'query_var' => true,
+        'taxonomies' => array( 'category', 'post_tag' ),
     );
     register_post_type('maw-resources', $args); // Register our post type with Wordpress
 }
@@ -96,6 +97,7 @@ function maw_resources_posts_shortcode($atts) {
 
     extract(shortcode_atts(array(
         'cat'     => '',
+        'tag' => '',
         'num'     => '5',
         'order'   => 'DESC',
         'orderby' => 'post_date',
@@ -105,6 +107,7 @@ function maw_resources_posts_shortcode($atts) {
 
     $args = array(
         'cat'            => $cat,
+        'tag'            => $tag,
         'posts_per_page' => $num,
         'order'          => $order,
         'orderby'        => $orderby,
