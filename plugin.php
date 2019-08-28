@@ -15,6 +15,52 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/*
+ *
+ * START: Sort Resources Post Type in Alphabetical Order on Admin Page
+ *
+ */
+function maw_sort_resources_post_by_title($query) {
+
+    if($query->is_admin) { // Check to see if the query is coming from an admin page
+
+        if ($query->get('post_type') == 'maw-resources') // Check to make sure that this query only targets certain post types
+        {
+            $query->set('orderby', 'title'); // Order by title
+            $query->set('order', 'ASC'); // Order the list in ascending order
+        }
+    }
+    return $query; // Return the custom query
+}
+add_filter('pre_get_posts', 'maw_sort_resources_post_by_title');
+
+/*
+ *
+ * END: Sort Resources Post Type in Alphabetical Order on Admin Page
+ *
+ */
+
+
+/*
+ *
+ * START: Include Custom Page Layout for the Resources Post Type
+ *
+ */
+function maw_resources_page_template( $maw_resources_single_template ) {
+    global $post;
+
+    if ( $post -> post_type == 'maw-resources') {
+        $maw_resources_single_template = plugin_dir_path(__FILE__) . '/includes/template-overrides/single-maw-resources.php';
+    }
+    return $maw_resources_single_template;
+}
+add_filter( 'single_template', 'maw_resources_page_template' );
+/*
+ *
+ * END: Include Custom Page Layout for the Resources Post Type
+ *
+ */
+
 
 /*
  *
@@ -72,15 +118,12 @@ add_action('init', 'maw_resources_custom_post_type');
  *
  * END: Custom Post Type 'Developer Notes'
  *
- *
  * */
 
 
 /*
  *
- *
  * START: Custom Shortcode
- *
  *
  */
 
@@ -99,8 +142,8 @@ function maw_resources_posts_shortcode($atts) {
         'cat'     => '',
         'tag' => '',
         'num'     => '5',
-        'order'   => 'DESC',
-        'orderby' => 'post_date',
+        'order'   => 'ASC',
+        'orderby' => 'title',
         'post_status' => 'publish',
         'post_type' => 'maw-resources',
     ), $atts));
