@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * Plugin Name: MAW-Resources
  * Plugin URI: https://thetechsurge.com/
  * Description: A plugin to create a custom post type to display resources on your website.
@@ -25,6 +25,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  */
 
+
+/*
+ *
+ * START: Register Stylesheets
+ *
+ */
+function maw_custom_resources_stylesheet() {
+    $plugin_url = plugin_dir_url( __FILE__ );
+
+    wp_enqueue_style( 'style1', $plugin_url . 'includes/styles/resources.css' );
+}
+add_action( 'wp_enqueue_scripts', 'maw_custom_resources_stylesheet' );
+/*
+ *
+ * END: Register Stylesheets
+ *
+ */
+
+
 /*
  *
  * START: Sort Resources Post Type in Alphabetical Order on Admin Page
@@ -43,7 +62,6 @@ function maw_sort_resources_post_by_title($query) {
     return $query; // Return the custom query
 }
 add_filter('pre_get_posts', 'maw_sort_resources_post_by_title');
-
 /*
  *
  * END: Sort Resources Post Type in Alphabetical Order on Admin Page
@@ -136,16 +154,6 @@ add_action('init', 'maw_resources_custom_post_type');
  * START: Custom Shortcode
  *
  */
-
-// Register Stylesheets
-function maw_custom_resources_stylesheet() {
-    $plugin_url = plugin_dir_url( __FILE__ );
-
-    wp_enqueue_style( 'style1', $plugin_url . 'includes/styles/resources.css' );
-}
-add_action( 'wp_enqueue_scripts', 'maw_custom_resources_stylesheet' );
-
-// Create custom shortcode
 function maw_resources_posts_shortcode($atts) {
 
     extract(shortcode_atts(array(
@@ -173,7 +181,7 @@ function maw_resources_posts_shortcode($atts) {
     $query = new WP_Query( $args );
     if( $query->have_posts() ){
 
-        $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Resource</div><div class="maw_link">Content</div><br class="maw_clear"></div>';
+        $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Resource</div><div class="maw_link">Link</div><br class="maw_clear"></div>';
 
         while( $query->have_posts() ){
             $query->the_post();
@@ -201,7 +209,7 @@ add_shortcode('maw_resources', 'maw_resources_posts_shortcode');
  * START: CMB2
  *
  */
-function maw_cmb2_metaboxes() {
+function maw_cmb2_metaboxes_initialize() {
     // Establish prefix to use for all fields
     $prefix = 'maw-';
 
@@ -264,7 +272,7 @@ function maw_cmb2_metaboxes() {
         'repeatable' => false,
     ) );
 }
-add_action( 'cmb2_admin_init', 'maw_cmb2_metaboxes' );
+add_action( 'cmb2_admin_init', 'maw_cmb2_metaboxes_initialize' );
 /*
  *
  * END: CMB2
