@@ -15,6 +15,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+
+/*
+ *
+ * Remove this before going live
+ * <div class="maw_date">Date</div>
+ * <div class="maw_date">'. get_the_date('m-d-Y') .'</div>
+ *
+ *
+ */
+
 /*
  *
  * START: Sort Resources Post Type in Alphabetical Order on Admin Page
@@ -26,7 +36,7 @@ function maw_sort_resources_post_by_title($query) {
 
         if ($query->get('post_type') == 'maw-resources') // Check to make sure that this query only targets certain post types
         {
-            $query->set('orderby', 'title'); // Order by title
+            $query->set('orderby', 'title'); // Order by Title
             $query->set('order', 'ASC'); // Order the list in ascending order
         }
     }
@@ -54,7 +64,7 @@ function maw_resources_page_template( $maw_resources_single_template ) {
     }
     return $maw_resources_single_template;
 }
-add_filter( 'single_template', 'maw_resources_page_template' );
+//add_filter( 'single_template', 'maw_resources_page_template' );
 /*
  *
  * END: Include Custom Page Layout for the Resources Post Type
@@ -163,11 +173,11 @@ function maw_resources_posts_shortcode($atts) {
     $query = new WP_Query( $args );
     if( $query->have_posts() ){
 
-        $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_date">Date</div><div class="maw_title">Resource</div><div class="maw_link">Content</div><br class="maw_clear"></div>';
+        $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Resource</div><div class="maw_link">Content</div><br class="maw_clear"></div>';
 
         while( $query->have_posts() ){
             $query->the_post();
-            $output .= '<div class="maw_item"><div class="maw_date">'. get_the_date('m-d-Y') .'</div><div class="maw_title"><b>'. get_the_title() .'</b></div><div class="maw_link"><a href="'. get_the_permalink() .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
+            $output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b></div><div class="maw_link"><a href="'. get_the_permalink() .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
         }
         $output .= '</div>';
     } else {
