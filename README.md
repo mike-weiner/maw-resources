@@ -36,6 +36,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ## Screenshots
+All images can be found in the '/assets/' folder.
 
 1. Description for image #1
 2. Description for image #2
