@@ -15,15 +15,17 @@ This plugin creates a custom post-type called "Resources" to make displaying PDF
 
 This plugin creates a custom post-type called "Resources" to make displaying PDF, PPTX, DOCX, and more file types easy to organize, add publisher/metadata for each resource, and display them for users to read.
 
-## Usage
-This plugin is designed to be used as a Wordpress Plugin to add custom functionality to your Wordpress administrators back-end.
-
 ## Installation
 
 This section describes how to install the plugin and get it working.
 
 1. Upload the plugin files to the plugins directory, or install the plugin through the WordPress Plugins panel directly.
 2. Activate the plugin through the Plugins panel in the WordPress administration area.
+
+## Usage
+This plugin is designed to be used as a Wordpress Plugin to add custom functionality to your Wordpress administrators back-end.
+
+### Shortcodes
 
 ## Frequently Asked Questions
 
