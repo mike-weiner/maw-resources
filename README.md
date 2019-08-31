@@ -93,6 +93,10 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
       * `meta_value` - order by the `meta_key` shortcode modifier. **NOTE:** The `meta_key` shortcode modifier _must_ be present for this to work.
       * `modified` - Order by the date that each post was last modified in your display of resources. 
       * `type` - Order by post-type(s).
+- `page_id` --> Choose to display only a single page or post using it's ID.
+   * **Default:** `` - By default the display will _not_ filter to a single post.
+   * **All Options:** 
+      * (VARIES) - You can use this field to pull in any post from resources section using its unique ID number.    
 - `post_type` --> Choose what post type to display.
    * **Default:** `maw-resources` - By default the display will order posts from the maw-resources post type.
    * **All Options:** 
