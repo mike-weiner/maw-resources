@@ -1,7 +1,3 @@
-.maw_clear {
-    clear: both;
-}
-
 .maw_container {
     width: 100%;
     margin: 0 0 30px;
@@ -33,23 +29,31 @@
     padding-right: 2.5%;
 }
 
-.maw_resource_publisher {
-    float: left;
-    width: 70%;
-}
-
-.maw_resource_description {
-    float: left;
-}
 .maw_container .maw_link {
     width: 25%;
     float: left;
     min-height: 30px;
 }
 
+.maw_title {
+    font-size: 14px;
+}
+
+.maw_resource_author {
+    font-size: 12px;
+}
+
+.maw_resource_description {
+    font-size: 10px;
+}
+
 .maw_empty_message {
     font-weight: bold !important;
     font-style: italic !important;
+}
+
+.maw_clear {
+    clear: both;
 }
 
 /*-----------------------------------------------------------------------------------*/
