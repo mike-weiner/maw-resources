@@ -49,6 +49,7 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
 - `cat` --> Filter your display to only pull Resources from a certain category(s). To accomplish this, enter the category ID number. To filter from multiple categories, separate each ID number by a comma. 
    * **Default:** Pulls posts from every category. 
    * **All Options:** 
+      * (VARIES) - This value depends on the tags on your website.
 - `ignore_sticky_posts` --> Choose whether or not your display will include sticky posts or not.  
    * **Default:** `false` - By default the dispaly _will_ include sticky posts in the display.
    * **All Options:** 
