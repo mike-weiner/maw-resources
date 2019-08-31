@@ -18,16 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /*
  *
- * Remove this before going live
- * <div class="maw_date">Date</div>
- * <div class="maw_date">'. get_the_date('m-d-Y') .'</div>
- *
- *
- */
-
-
-/*
- *
  * START: Register Stylesheets
  *
  */
@@ -92,19 +82,19 @@ function maw_resources_page_template( $maw_resources_single_template ) {
 
 /*
  *
- * Custom Post Type Start
+ * START: Custom Post Type 'maw-resources'
  * https://developer.wordpress.org/reference/functions/register_post_type/#parameters
  *
- * */
+ */
 function maw_resources_custom_post_type() {
     $supports = array(
         'title', // Post title
         'editor', // Post content
         'author', // Post author
-        'thumbnail', // Featured images
-        'excerpt', // Post excerpt
+        //'thumbnail', // Featured images
+        //'excerpt', // Post excerpt
         'custom-fields', // Custom fields
-        'comments', // Post comments
+        //'comments', // Post comments
         'revisions', // Post revisions
         'post-formats', // Post formats
     );
@@ -130,7 +120,7 @@ function maw_resources_custom_post_type() {
         'public' => true,
         'hierarchical' => true,
         'exclude_from_search' => false,
-        'publicly_queryable' => true,
+        'publicly_queryable' => true, // Set this to be false to hide the single and archive page
         'show_ui' => true,
         'show_in_menu' => true,
         'supports' => $supports,
@@ -144,9 +134,28 @@ function maw_resources_custom_post_type() {
 add_action('init', 'maw_resources_custom_post_type');
 /*
  *
- * END: Custom Post Type 'Developer Notes'
+ * END: Custom Post Type 'maw-resources'
  *
- * */
+ */
+
+
+/*
+ *
+ * START: Disable comments on 'maw-resources' post type
+ *
+ */
+function maw_resources_post_type_disable_comments( $post_id ) {
+    $post_type = get_post_type( $post_id );
+    if ( $post_type == 'maw-resources' ) {
+        return false;
+    }
+}
+add_filter( 'comments_open', 'my_prefix_comments_open', 10 , 1 );
+/*
+ *
+ * END: Disable comments on 'maw-resources' post type
+ *
+ */
 
 
 /*
@@ -158,42 +167,51 @@ function maw_resources_posts_shortcode($atts) {
 
     extract(shortcode_atts(array(
         'cat'     => '',
-        'tag' => '',
+        'ignore_sticky_posts' => false,
         'num'     => '5',
         'order'   => 'ASC',
         'orderby' => 'title',
-        'post_status' => 'publish',
+        'offset'  => '0',
         'post_type' => 'maw-resources',
+        'tag' => '',
     ), $atts));
 
     $args = array(
         'cat'            => $cat,
         'tag'            => $tag,
         'posts_per_page' => $num,
+        'offset'         =>  $offset,
         'order'          => $order,
         'orderby'        => $orderby,
-        'post_status'    => $post_status,
         'post_type'      => $post_type,
     );
 
-    $output = ''; // Establish variable to print
+    $maw_output = ''; // Establish variable to print
 
-    $query = new WP_Query( $args );
-    if( $query->have_posts() ){
+    $maw_query = new WP_Query( $args );
+    if( $maw_query->have_posts() ){
 
-        $output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Resource</div><div class="maw_link">Link</div><br class="maw_clear"></div>';
+        $maw_output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Name</div><div class="maw_link">Link</div><br class="maw_clear"></div>';
 
-        while( $query->have_posts() ){
-            $query->the_post();
-            $output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b></div><div class="maw_link"><a href="'. get_the_permalink() .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
+        while( $maw_query->have_posts() ){
+            $maw_query->the_post();
+
+            $maw_post_id = get_the_ID(); // Get the id of the resource
+            $maw_resource_url = get_post_meta($maw_post_id, 'maw-resource-url', true); // Store the resource URL
+
+            if ($maw_resource_url != null) { // If the resource does not have a URL (use our $maw_resource_url variable) then do not display it
+                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b> <?php if (get_the_author() != null) {?> <br /> <em>Published By: '. get_the_author() .'</em> <?php } ?></div><div class="maw_link"><a href="'. get_post_meta($maw_post_id, 'maw-resource-url', true) .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
+            } else {
+                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b> <?php if (get_the_author() != null) {?> <br /> <em>Published By: '. get_the_author() .'</em> <?php } ?></div><br class="maw_clear"></div>';
+            }
         }
-        $output .= '</div>';
+        $maw_output .= '</div>';
     } else {
-        $output .= '<div><p class="maw_empty_message">We are sorry. There are no posts that fit your criteria to display.</p></div>';
+        $maw_output .= '<div><p class="maw_empty_message">We are sorry. There are no posts that fit your criteria to display.</p></div>';
     }
     wp_reset_postdata();
 
-    return $output;
+    return $maw_output;
 
 }
 add_shortcode('maw_resources', 'maw_resources_posts_shortcode');
@@ -209,68 +227,55 @@ add_shortcode('maw_resources', 'maw_resources_posts_shortcode');
  * START: CMB2
  *
  */
-function maw_cmb2_metaboxes_initialize() {
+function maw_cmb2_metaboxes_initialize()
+{
     // Establish prefix to use for all fields
-    $prefix = 'maw-';
+    $maw_prefix = 'maw-';
 
     /*
      * Initiate Metabox Area on Post/Page
      */
-    $maw_article_cmb_area = new_cmb2_box( array(
-        'id'            => $prefix . 'article_metabox',
-        'title'         => __( 'Article', 'cmb2' ),
-        'object_types'  => array('maw-resources' ), // Set what pages/posts this metabox area is available on
-        'context'       => 'normal',
-        'priority'      => 'high', // Set priority of metabox area
-        'show_names'    => true, // Show field names on the left
-        'closed'     => false, // Keep the metabox closed by default
+    $maw_article_cmb_area = new_cmb2_box(array(
+        'id' => $maw_prefix . 'resource_metabox',
+        'title' => __('Resource Information', 'cmb2'),
+        'object_types' => array('maw-resources'), // Set what pages/posts this metabox area is available on
+        'context' => 'normal',
+        'priority' => 'high', // Set priority of metabox area
+        'show_names' => true, // Show field names on the left
+        'closed' => false, // Keep the metabox closed by default
+    ));
+
+    /*
+    * Date of publication date selector to 'Resource' metabox area
+    */
+    $maw_article_cmb_area->add_field( array(
+        'name' => 'Publication Date of Resource',
+        'id'   => 'wiki_test_textdate_timestamp',
+        'type' => 'text_date_timestamp',
+        // 'timezone_meta_key' => 'wiki_test_timezone',
+        // 'date_format' => 'l jS \of F Y',
     ) );
 
     /*
-     * Add text field to 'Article' metabox area
+     * Add URL text field with URL type to 'Resource' metabox area
      */
-    $maw_article_cmb_area->add_field( array(
-        'name'       => __( 'Article Name', 'cmb2' ),
-        'desc'       => __( 'Enter the Name of the Article', 'cmb2' ),
-        'id'         => $prefix . 'article-name',
-        'type'       => 'text', // Set type of field
-        'char_counter' => 'characters',
-        'char_max' => 25,
-        'char_max_enforce' => false,
-        'text'    => array(
-            'characters_left_text' => 'Characters Left',
-            'characters_text' => 'Characters',
-            'characters_truncated_text' => 'Keep your entry to 25 characters or less, please!',
-        ),
-        'show_on_cb' => 'cmb2_hide_if_no_cats', // Function should return a bool value
-        // 'sanitization_cb' => 'my_custom_sanitization', // Custom sanitization callback parameter
-        // 'escape_cb'       => 'my_custom_escaping',  // Custom escaping callback parameter
-        // 'on_front'        => false, // Optionally designate a field to wp-admin only
-        // 'repeatable'      => true,
-    ) );
-
-    /*
-     * Add text field with URL type to 'Article' metabox area
-     */
-    $maw_article_cmb_area->add_field( array(
-        'name' => __( 'Article URL', 'cmb2' ),
-        'desc' => __( 'Enter the URL of the Article', 'cmb2' ),
-        'id'   => $prefix . 'article-url',
+    $maw_article_cmb_area->add_field(array(
+        'name' => __('Link to Resource', 'cmb2'),
+        'desc' => __('Enter the link to the resource.', 'cmb2'),
+        'id' => $maw_prefix . 'resource-url',
         'type' => 'text_url', // Set type of field
-        // 'protocols' => array('http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet'), // Array of allowed protocols
-        // 'repeatable' => true,
-    ) );
+        // 'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
+    ));
 
     /*
-     * Add email text field with URL type to 'Article' metabox area
+     * Add Short description field to 'Resource" metabox area
      */
-    $maw_article_cmb_area->add_field( array(
-        'name' => __( 'Author Email Address', 'cmb2' ),
-        'desc' => __( 'Enter the Email Address of the Author (optional)', 'cmb2' ),
-        'id'   => $prefix . 'author-email',
-        'type' => 'text_email', // Set the tye of field
-        'repeatable' => false,
-    ) );
+    $maw_article_cmb_area->add_field(array(
+        'name' => __('Short Description', 'cmb2'),
+        'desc' => __('Enter a short description of what this resource is.', 'cmb2'),
+        'id' => $maw_prefix . 'resource-description',
+        'type' => 'textarea_small', // Set type of field
+    ));
 }
 add_action( 'cmb2_admin_init', 'maw_cmb2_metaboxes_initialize' );
 /*
