@@ -31,9 +31,9 @@ This plugin will includes a display for your new custom `Resources` post-type. B
 
 | Nane                                            | Link          |  
 |-------------------------------------------------|---------------|
-| Resource Post Name #1<br> _Published By: Lorem_ | View Resource | 
-| Resource Post Name #2<br> _Published By: Lorem_ | View Resource |
-| Resource Post Name #3<br> _Published By: Lorem_ | View Resource | 
+| Resource Post Name #1<br> _--Published By: Lorem_ <br>Description of the resource.| View Resource | 
+| Resource Post Name #2<br> _--Published By: Lorem_ <br>Description of the resource.| View Resource |
+| Resource Post Name #3<br> _--Published By: Lorem_ <br>Description of the resource.| View Resource | 
 
 ## Shortcodes
 
