@@ -89,14 +89,14 @@ function maw_resources_page_template( $maw_resources_single_template ) {
 function maw_resources_custom_post_type() {
     $supports = array(
         'title', // Post title
-        'editor', // Post content
+        //'editor', // Post content
         'author', // Post author
         //'thumbnail', // Featured images
         //'excerpt', // Post excerpt
         'custom-fields', // Custom fields
         //'comments', // Post comments
         'revisions', // Post revisions
-        'post-formats', // Post formats
+        //'post-formats', // Post formats
     );
 
     $labels = array(
@@ -120,7 +120,7 @@ function maw_resources_custom_post_type() {
         'public' => true,
         'hierarchical' => true,
         'exclude_from_search' => false,
-        'publicly_queryable' => true, // Set this to be false to hide the single and archive page
+        'publicly_queryable' => false, // Set this to be false to hide the single and archive page
         'show_ui' => true,
         'show_in_menu' => true,
         'supports' => $supports,
@@ -201,11 +201,12 @@ function maw_resources_posts_shortcode($atts) {
 
             $maw_post_id = get_the_ID(); // Get the id of the resource
             $maw_resource_url = get_post_meta($maw_post_id, 'maw-resource-url', true); // Store the resource URL
+            $maw_resource_description = get_post_meta($maw_post_id, 'maw-resource-description', true); // Store the resource description
 
             if ($maw_resource_url != null) { // If the resource does not have a URL (use our $maw_resource_url variable) then do not display it
-                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b> <?php if (get_the_author() != null) {?> <br /> <em>Published By: '. get_the_author() .'</em> <?php } ?></div><div class="maw_link"><a href="'. get_post_meta($maw_post_id, 'maw-resource-url', true) .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
+                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b> <?php if (get_the_author() != null) {?><br /><em>Published By: '. get_the_author() .'</em><?php } ?></div><div class="maw_link"><a href="'. get_post_meta($maw_post_id, 'maw-resource-url', true) .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
             } else {
-                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b> <?php if (get_the_author() != null) {?> <br /> <em>Published By: '. get_the_author() .'</em> <?php } ?></div><br class="maw_clear"></div>';
+                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b></div> <div class="maw_resource_publisher"><?php if (get_the_author() != null) {?><em>Published By: '. get_the_author() .'</em> <?php } ?></div></div>';
             }
         }
         $maw_output .= '</div>';
