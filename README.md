@@ -15,6 +15,10 @@ This Wordpress plugin creates a custom post-type called "Resources" to make disp
 
 This plugin creates a custom post-type called "Resources" to make displaying PDF, PPTX, DOCX, and more file types easy to organize, add publisher/metadata for each resource, and display them for users to read.
 
+### Things to Note
+- This custom post-type does _not_ have a single or archive page layout. The only way to display these posts is [using the shortcode](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes) that pulls in a display that can be used on _any_ page or post.
+- There is no standard WYSIWYG editor. There are only custom fields that you can fill out that will be used in the display of your resource post-types.
+
 ## Installation
 
 This section describes how to install the plugin and get it working.
