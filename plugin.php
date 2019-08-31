@@ -169,11 +169,11 @@ function maw_resources_posts_shortcode($atts) {
     extract(shortcode_atts(array(
         'cat'     => '',
         'ignore_sticky_posts' => false,
+        'meta_key' => '',
         'num'     => '5',
         'order'   => 'ASC',
         'orderby' => 'title',
         'offset'  => '0',
-        'meta_key' => '',
         'post_type' => 'maw-resources',
         'tag' => '',
     ), $atts));
@@ -255,8 +255,9 @@ function maw_cmb2_metaboxes_initialize()
         'name' => 'Publication Date of Resource',
         'id'   => $maw_prefix . 'resource-publish-date',
         'type' => 'text_date_timestamp',
-        // 'timezone_meta_key' => 'wiki_test_timezone',
-        // 'date_format' => 'l jS \of F Y',
+        'attributes'  => array(
+            'required'    => 'required',
+        ),
     ) );
 
     /*
@@ -267,6 +268,9 @@ function maw_cmb2_metaboxes_initialize()
         'desc' => __('Enter the link to the resource.', 'cmb2'),
         'id' => $maw_prefix . 'resource-url',
         'type' => 'text_url', // Set type of field
+        'attributes'  => array(
+            'required'    => 'required',
+        ),
         // 'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
     ));
 
