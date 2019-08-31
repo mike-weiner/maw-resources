@@ -72,7 +72,8 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
 - `post_type` --> Choose what post type to display.
    * **Default:** `maw-resources` - By default the display will order posts from the maw-resources post type.
    * **All Options:** 
-      * (VARIES) - You can use this field to pull in different custom post types.      
+      * `any` - Pull in all posts from any post-type on your website
+      * (VARIES) - You can use this field to pull in different custom post-types.      
 - `tag` --> Filter your display to only pull Resources with a certain tag(s). To accomplish this, enter the tag ID number. To filter with multiple tags, separate each ID number by a comma. 
    * **Default:** Pulls posts from every category. 
    * **All Options:** 
@@ -85,27 +86,28 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
 
 ## Frequently Asked Questions
 
-### Question #1
+### Where do I find and create new resources?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Once this plugin is activated, you will find a new 'Resources' tab in the left-hand admin sidebar of your Wordpress website. This is where you can view and create new resources like you would any other post or page.
 
-### Question #2
+### Can I use this shortcode to display other post types?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Yes! You will need to use the `post-type` shortcode modifier. You can pull in only certain post-types, other custom post-types, all post-types, or a select few. Please read our [shortcode documentation](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes) to see how to implement this.
 
 ## Screenshots
 All images can be found in the /assets/ folder.
 
-1. Description for image #1
-2. Description for image #2
-3. Description for image #3
+1. Lorem Ipsum
+2. Lorem Ipsum
+3. Lorem Ipsum
 
 ## Changelog
 
 ### 1.0 🎉
-* Initial release
+* Welcome to the maiden release of maw-resources! We hope you love what you find!
 
 ### 1.0 🎉
+* Relased On - xx/xx/xxxx
 * Initial release
 
 ## Arbitrary section
