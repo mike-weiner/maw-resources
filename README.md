@@ -23,7 +23,7 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the Plugins panel in the WordPress administration area.
 
 ## Display
-This plugin will includes a display for your new custom `Resources` post-type. Below is an example of what that dislay will look like on any page or post. To learn how to use a shortcode to create your own display, [view the shortcode section below.] (https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes)
+This plugin will includes a display for your new custom `Resources` post-type. Below is an example of what that dislay will look like on any page or post. To learn how to use a shortcode to create your own display, [view the shortcode section below.](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes)
 
 | Resource                                      | Link          |  
 |-----------------------------------------------|---------------|
