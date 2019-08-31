@@ -33,10 +33,10 @@ This plugin will includes a display for your new custom `Resources` post-type. B
 
 ## Shortcodes
 
-#### Quick Start
-To quickly get started, use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. 
+### Quick Start
+To quickly get started, use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. To see more complex exmaples, read the shortcode modifiers below, or [view our additional examples.](https://github.com/mike-weiner/maw-resources#examples) 
 
-#### Shortcode Modifiers
+### Shortcode Modifiers
 
 This plugin uses a shortcode with *several* modifiers to display the posts within the Resources post type. Below are a list of the modifiers and their default values. 
 
@@ -79,7 +79,7 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **All Options:** 
       * (VARIES) - This value depends on the tags on your website.      
  
-#### Examples
+### Examples
 - `[maw_resources]` - This is the deault shortcode. It will pull in the 5 latest Resources with any category or tag.
 - `[maw_resources num="-1" orderby="post-date" order="DESC"]` - This shortcde will pull in every resource in the system, and order in by the date of their post in a descending order.
 - `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcde will pull in every resource with the category whose IDs are 23 and 24, order them in ascending order by their post-date.
