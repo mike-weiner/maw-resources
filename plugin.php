@@ -189,35 +189,57 @@ function maw_resources_posts_shortcode($atts) {
         'tag'            => $tag,
     );
 
-    $maw_output = ''; // Establish variable to print
+    $maw_output = ''; // Establish variable to print HTML for display
 
     $maw_query = new WP_Query( $args );
     if( $maw_query->have_posts() ){
 
+        /*
+         * Begin HTML Output
+         */
         $maw_output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Name</div><div class="maw_link">Link</div><br class="maw_clear"></div>';
 
         while( $maw_query->have_posts() ){
             $maw_query->the_post();
 
+            /*
+             * Get the various resource post attributes
+             */
             $maw_resource_id = get_the_ID(); // Get the id of the resource
+            $maw_resource_title = get_the_title();
+            $maw_resource_author = get_the_author(); // Get the author of the resource post
             $maw_resource_date = get_post_meta($maw_resource_id, 'maw-publish-date', true); // Store the resource's publication date entered by the user
             $maw_resource_url = get_post_meta($maw_resource_id, 'maw-resource-url', true); // Store the resource's URL
             $maw_resource_description = get_post_meta($maw_resource_id, 'maw-resource-description', true); // Store the resource's description entered by the user
 
-            if ($maw_resource_url != null) { // If the resource does not have a URL (use our $maw_resource_url variable) then do not display it
-                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b><?php if (get_the_author() != null) {?><br /><em>Published By: '. get_the_author() .'</em><?php } ?></div><div class="maw_link"><a href="'. get_post_meta($maw_resource_id, 'maw-resource-url', true) .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
+            /*
+             * Finish HTML Output
+             */
+            $maw_output .= '<div class="maw_item">'; // Add the <div> for the item
+            $maw_output .= '<div class="maw_title"><b>'. $maw_resource_title .'</b>'; // Add the title <div> and the title of the post
+
+            if ($maw_resource_author != null) { // Check to see if the resource has an author and if so, display it
+                $maw_output .= '<div class="maw_resources_author"><em>Published By: '. $maw_resource_author .'</em></div>';
+            }
+
+            if ($maw_resource_description != null) { // Check to see if the resource has a short description, and if so display it
+                $maw_output .= '<div class="maw_resource_description">'. $maw_resource_description .'<br class="maw_clear"></div>';
+            }
+
+            if ($maw_resource_url != null) { // Check to see if the resource has a URL, and if so display it
+                $maw_output .= '</div><div class="maw_link"><a href="'. get_post_meta($maw_resource_id, 'maw-resource-url', true) .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
             } else {
-                $maw_output .= '<div class="maw_item"><div class="maw_title"><b>'. get_the_title() .'</b><br /><?php if (get_the_author() != null) {?><em>Published By: '. get_the_author() .'</em> <?php } ?></div><br class="maw_clear"></div>';
+                $maw_output .= '</div><br class="maw_clear"></div>';
             }
         }
-        $maw_output .= '</div>';
+        $maw_output .= '</div></div></div>'; // Close maw_item, maw_header, and maw_container
     } else {
-        $maw_output .= '<div><p class="maw_empty_message">We are sorry. There are no posts that fit your criteria to display.</p></div>';
+        $maw_output .= '<div><p class="maw_empty_message">We are sorry. There are no posts that fit your criteria to display.</p></div>'; // Return error message if no shortcode requirements find any matching posts
     }
-    wp_reset_postdata();
 
-    return $maw_output;
+    wp_reset_postdata(); // Clear the query data for future queries
 
+    return $maw_output; // Return the HTML to be displayed
 }
 add_shortcode('maw_resources', 'maw_resources_posts_shortcode');
 /*
