@@ -35,7 +35,7 @@ To quickly get started use `[maw_resources]` on any page or post to quickly disp
 This plugin uses a shortcode with *several* modifiers to display the posts within the Resources post type. Below are a list of the modifiers and their default values. 
 
 - `cat` --> Filter your display to only pull Resources from a certain category(s). Enter the resource ID number. To filter from multiple categories, separate each ID number by a comma. 
-⋅⋅⋅ *Default:* Pulls posts from every category. 
+    *Default:* Pulls posts from every category. <br>
 - `tag` --> Filter your displahy to only pull Resources with a certain tag(s). Enter the tag ID number. To filter with multiple tags, separate each ID number by a comma. *Default:* Pulls posts from every category. 
 - `posts_per_page` --> Change how many posts are displayed with the shortcode. *Default:* Pulls the 5 most recent posts. *To include all posts in your display:* Set the value to '-1'.
 
