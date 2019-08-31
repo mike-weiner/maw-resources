@@ -113,6 +113,7 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
 - `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcde will pull in every resource with the category whose IDs are 23 and 24 and order them in ascending order by their post-date.
 - `[maw_resources orderby="meta_value title"]` - This shortcode will pull in 5 of the latest resources and will order them by the value of the metadata field (_Publish Date of Resource_) and then by the title of the resource (if several resources either have the same date or no date at all), and all of the posts will be displayed in ascending order.
 - `[maw_resources num="-1" maw_show_resource_author="false" maw_show_resource_description="false"]` - This shorcode will pull in all of your resources no matter their category or tag, and it will _not_ show the author **or** the description in the display. The posts will be ordered by the title of your resources in ascending order.
+- `[maw_resources num="-1" meta_key="maw-resource-publish-date" orderby="meta_value title" order="asc"]` - This shortcode will display all of your resources and order them by the publication date of the publication (this is one of the fields you fill out) in an ascending order.
 
 ## Frequently Asked Questions
 
