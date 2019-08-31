@@ -22,6 +22,15 @@ This section describes how to install the plugin and get it working.
 1. Upload the plugin files to the plugins directory, or install the plugin through the WordPress Plugins panel directly.
 2. Activate the plugin through the Plugins panel in the WordPress administration area.
 
+## Display
+This plugin will includes a display for your new custom `Resources` post-type. Below is an example of what that dislay will look like on any page or post. To learn how to use a shortcode to create your own display, view the shortcode section below.
+
+| Resource                                      |   | Link          |   |   |
+|-----------------------------------------------|---|---------------|---|---|
+| Resource Post Name #1<br> Published By: Lorem |   | View Resource |   |   |
+| Resource Post Name #2<br> Published By: Lorem |   | View Resource |   |   |
+| Resource Post Name #3<br> Published By: Lorem |   | View Resource |   |   |
+
 ## Shortcodes
 
 #### Quick Start
