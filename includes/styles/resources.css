@@ -39,12 +39,13 @@ Also remove the date class from the mobile responsive menu
 }
 
 .maw_container .maw_title {
-    width: 60%;
+    width: 70%;
     float: left;
+    padding-right: 2.5%;
 }
 
 .maw_container .maw_link {
-    width: 35%;
+    width: 25%;
     float: left;
     min-height: 30px;
 }
