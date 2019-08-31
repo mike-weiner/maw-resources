@@ -33,6 +33,14 @@
     padding-right: 2.5%;
 }
 
+.maw_resource_publisher {
+    float: left;
+    width: 70%;
+}
+
+.maw_resource_description {
+    float: left;
+}
 .maw_container .maw_link {
     width: 25%;
     float: left;
