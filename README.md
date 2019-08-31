@@ -55,6 +55,16 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **All Options:** 
       * `true` - Remove sticky posts from your display of resources.
       * `false` - Keep sticky posts in your display of resources.
+- `mw_show_resource_author` - Choose whether or not to display your resource's author within your display.
+  * **Default:** By default, the display will show your resources' post authors.
+  * **All Options:**
+    * `true` - Show the post author in the display.
+    * `false` - Do _not_ show the post author in the display.
+- `mw_show_resource_description` - Choose whether or not to display your resource's description within your display.
+  * **Default:** By default, the display will show your resource's descrption (if one is present).
+  * **All Options:**
+    * `true` - Show the post author in the display.
+    * `false` - Do _not_ show the post author in the display.    
 - `meta_key` --> Display posts that only have a value for a certain meta_key field.
    * **Default:** No limitations.
    * **All Options:**    
@@ -113,13 +123,6 @@ Great question! We wanted to keep this tool as simple as possible. All you need 
 
 Yes! You will need to use the `post-type` shortcode modifier. You can pull in only certain post-types, other custom post-types, all post-types, or a select few. Please read our [shortcode documentation](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes) to see how to implement this.
 
-## Screenshots
-All images can be found in the /assets/ folder.
-
-1. Lorem Ipsum
-2. Lorem Ipsum
-3. Lorem Ipsum
-
 ## Changelog
 
 ### 1.0 🎉
@@ -129,6 +132,3 @@ All images can be found in the /assets/ folder.
 * Relased On - xx/xx/xxxx
 * Initial release
 
-## Arbitrary section
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
