@@ -55,11 +55,11 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **All Options:** 
       * `true` - Remove sticky posts from your display of resources.
       * `false` - Keep sticky posts in your display of resources.
-- `mw_show_resource_author` - Choose whether or not to display your resource's author within your display.
-  * **Default:** By default, the display will show your resources' post authors.
+- `mw_show_resource_author` - Choose whether or not to display your resource's publisher within your display (This pulls in the value from the "Resource Publisher" field.
+  * **Default:** By default, the display will show your resources' publsihers.
   * **All Options:**
-    * `true` - Show the post author in the display.
-    * `false` - Do _not_ show the post author in the display.
+    * `true` - Show the resource publisher in the display.
+    * `false` - Do _not_ show the resource publisher in the display.
 - `mw_show_resource_description` - Choose whether or not to display your resource's description within your display.
   * **Default:** By default, the display will show your resource's descrption (if one is present).
   * **All Options:**
