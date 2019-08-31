@@ -38,17 +38,22 @@ To quickly get started, use `[maw_resources]` on any page or post to quickly dis
 
 ### Shortcode Modifiers
 
-This plugin uses a shortcode with *several* modifiers to display the posts within the Resources post type. Below are a list of the modifiers and their default values. 
+This plugin uses a shortcode with *several* modifiers to display the posts within the Resources post type. Below are a list of the modifiers and their default values.
+
+**Note:** Not all of these modifiers need to be included in your shortcode. You can pick and choose which modifiers you need. However, do note that some modifiers override other modifiers. Notes have been made where applicable about this.
 
 - `cat` --> Filter your display to only pull Resources from a certain category(s). To accomplish this, enter the category ID number. To filter from multiple categories, separate each ID number by a comma. 
    * **Default:** Pulls posts from every category. 
    * **All Options:** 
-      * (VARIES) - This value depends on the categories on your website.
 - `ignore_sticky_posts` --> Choose whether or not your display will include sticky posts or not.  
    * **Default:** `false` - By default the dispaly _will_ include sticky posts in the display.
    * **All Options:** 
       * `true` - Remove sticky posts from your display of resources.
       * `false` - Keep sticky posts in your display of resources.
+- `meta_key` --> Display posts that only have a value for a certain meta_key field.
+   * **Default:** No limitations.
+   * **All Options:**    
+      * `maw-resource-publish-date` - Sort by the date of publication entered in the custom _'Publication Date of Resource'_ field on the backend of the site. **THIS IS NOT THE PUBLISH DATE OF THE POST.**
 - `posts_per_page` --> Change how many posts are displayed with the shortcode. 
    * **Default:** `5` - By default the display will display the 5 latest resources.
    * **All Options**:** 
@@ -64,11 +69,14 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **All Options:** 
       * `ASC` - Order posts in an ascending order
       * `DESC` - Order posts in a descending order
-- `orderby` --> Choose what metric the resources in your display are sorted by.
+- `orderby` --> Choose what metric the resources in your display are sorted by. **Note:** You can include more than one oderby prarameter as a fallback(s). When using more than one orderby parameter, separate each by a sapce. For example: `orderby="title post-date"` would sort posts by title and then if a post did not have a title it would sort by post-date. 
    * **Default:** `title` - By default the display will order posts by their title
    * **All Options:** 
-      * `title` - Title of Your Resource(s)
-      * `post_date` - Publish Date of Your Resources
+      * `title` - Order by the title of your resource(s).
+      * `post_date` - Order by the publish date of the resource post.
+      * `meta_value` - order by the `meta_key` shortcode modifier. **NOTE:** The `meta_key` shortcode modifier _must_ be present for this to work.
+      * `modified` - Order by the date that each post was last modified in your display of resources. 
+      * 'type` - Order by post-type(s).
 - `post_type` --> Choose what post type to display.
    * **Default:** `maw-resources` - By default the display will order posts from the maw-resources post type.
    * **All Options:** 
