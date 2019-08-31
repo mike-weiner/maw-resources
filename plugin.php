@@ -161,6 +161,7 @@ add_filter( 'comments_open', 'my_prefix_comments_open', 10 , 1 );
 /*
  *
  * START: Custom Shortcode
+ * https://developer.wordpress.org/reference/classes/wp_query/
  *
  */
 function maw_resources_posts_shortcode($atts) {
@@ -172,18 +173,20 @@ function maw_resources_posts_shortcode($atts) {
         'order'   => 'ASC',
         'orderby' => 'title',
         'offset'  => '0',
+        'meta_key' => '',
         'post_type' => 'maw-resources',
         'tag' => '',
     ), $atts));
 
     $args = array(
         'cat'            => $cat,
-        'tag'            => $tag,
+        'meta_key' => $meta_key,
         'posts_per_page' => $num,
         'offset'         =>  $offset,
         'order'          => $order,
         'orderby'        => $orderby,
         'post_type'      => $post_type,
+        'tag'            => $tag,
     );
 
     $maw_output = ''; // Establish variable to print
@@ -250,7 +253,7 @@ function maw_cmb2_metaboxes_initialize()
     */
     $maw_article_cmb_area->add_field( array(
         'name' => 'Publication Date of Resource',
-        'id'   => 'wiki_test_textdate_timestamp',
+        'id'   => $maw_prefix . 'resource-publish-date',
         'type' => 'text_date_timestamp',
         // 'timezone_meta_key' => 'wiki_test_timezone',
         // 'date_format' => 'l jS \of F Y',
