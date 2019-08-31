@@ -95,7 +95,7 @@ function maw_resources_custom_post_type() {
         //'excerpt', // Post excerpt
         'custom-fields', // Custom fields
         //'comments', // Post comments
-        'revisions', // Post revisions
+        //'revisions', // Post revisions
         //'post-formats', // Post formats
     );
 
@@ -169,6 +169,8 @@ function maw_resources_posts_shortcode($atts) {
     extract(shortcode_atts(array(
         'cat'     => '',
         'ignore_sticky_posts' => false,
+        'maw_show_resource_author' => true,
+        'maw_show_resource_description' => true,
         'meta_key' => '',
         'num'     => '5',
         'order'   => 'ASC',
@@ -180,14 +182,23 @@ function maw_resources_posts_shortcode($atts) {
 
     $args = array(
         'cat'            => $cat,
+        'maw_show_resource_author' => $maw_show_resource_author,
+        'maw_show_resource_description' => $maw_show_resource_description,
         'meta_key' => $meta_key,
         'posts_per_page' => $num,
         'offset'         =>  $offset,
         'order'          => $order,
         'orderby'        => $orderby,
         'post_type'      => $post_type,
+        'num'     => $num,
         'tag'            => $tag,
     );
+
+    /*
+     *  Extract values of the custom shortcode modifiers
+     */
+    $maw_display_show_author = esc_attr($args['maw_show_resource_author']);
+    $maw_display_show_description = esc_attr($args['maw_show_resource_description']);
 
     $maw_output = ''; // Establish variable to print HTML for display
 
@@ -206,7 +217,7 @@ function maw_resources_posts_shortcode($atts) {
              * Get the various resource post attributes
              */
             $maw_resource_id = get_the_ID(); // Get the id of the resource
-            $maw_resource_title = get_the_title();
+            $maw_resource_title = get_the_title(); // Get and store the title of the resource
             $maw_resource_author = get_the_author(); // Get the author of the resource post
             $maw_resource_date = get_post_meta($maw_resource_id, 'maw-publish-date', true); // Store the resource's publication date entered by the user
             $maw_resource_url = get_post_meta($maw_resource_id, 'maw-resource-url', true); // Store the resource's URL
@@ -218,11 +229,11 @@ function maw_resources_posts_shortcode($atts) {
             $maw_output .= '<div class="maw_item">'; // Add the <div> for the item
             $maw_output .= '<div class="maw_title"><b>'. $maw_resource_title .'</b>'; // Add the title <div> and the title of the post
 
-            if ($maw_resource_author != null) { // Check to see if the resource has an author and if so, display it
-                $maw_output .= '<div class="maw_resources_author"><em>Published By: '. $maw_resource_author .'</em></div>';
+            if ($maw_display_show_author === 'true' && $maw_resource_author != null) { // Check to see if the user has allowed the author in the display AND that the the resource has an author and if so, display it
+                $maw_output .= '<div class="maw_resource_author"><em>Published By: '. $maw_resource_author .'</em></div>';
             }
 
-            if ($maw_resource_description != null) { // Check to see if the resource has a short description, and if so display it
+            if ($maw_resource_description != null) { // Check to see if the user has allowed the description in the display AND that the resource has a short description, and if so display it
                 $maw_output .= '<div class="maw_resource_description">'. $maw_resource_description .'<br class="maw_clear"></div>';
             }
 
