@@ -82,13 +82,17 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
 ### Examples
 - `[maw_resources]` - This is the deault shortcode. It will pull in the 5 latest Resources with any category or tag.
 - `[maw_resources num="-1" orderby="post-date" order="DESC"]` - This shortcde will pull in every resource in the system, and order in by the date of their post in a descending order.
-- `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcde will pull in every resource with the category whose IDs are 23 and 24, order them in ascending order by their post-date.
+- `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcde will pull in every resource with the category whose IDs are 23 and 24 and order them in ascending order by their post-date.
 
 ## Frequently Asked Questions
 
 ### Where do I find and create new resources?
 
 Once this plugin is activated, you will find a new 'Resources' tab in the left-hand admin sidebar of your Wordpress website. This is where you can view and create new resources like you would any other post or page.
+
+### Why does this post type only use custom fields and not a standard editor?
+
+Great question! We wanted to keep this tool as simple as possible. All you need to enter is the resource's name, a publication date of the resource, a link to the resource, and a short description of what your resource is (optional). That is all it takes to publish your resources to allow visitors on your website to find.
 
 ### Can I use this shortcode to display other post types?
 
