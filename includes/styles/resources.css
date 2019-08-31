@@ -1,14 +1,3 @@
-/*
-Remove this before going live
-
-.maw_container .maw_date {
-    width: 25%;
-    float: left;
-}
-
-Also remove the date class from the mobile responsive menu
- */
-
 .maw_clear {
     clear: both;
 }
@@ -60,12 +49,6 @@ Also remove the date class from the mobile responsive menu
 /*-----------------------------------------------------------------------------------*/
 
 @media only screen and (max-width: 450px) {
-
-    /*.maw_container .maw_date {*/
-    /*    width: 25%;*/
-    /*    float: left;*/
-    /*}*/
-
     .maw_container .maw_title {
         width: 60%;
         float: left;
