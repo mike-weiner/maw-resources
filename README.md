@@ -34,7 +34,7 @@ This plugin will includes a display for your new custom `Resources` post-type. B
 ## Shortcodes
 
 #### Quick Start
-To quickly get started use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. 
+To quickly get started, use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. 
 
 #### Shortcode Modifiers
 
@@ -44,15 +44,21 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **Default:** Pulls posts from every category. 
    * **All Options:** 
       * (VARIES) - This value depends on the categories on your website.
-- `tag` --> Filter your display to only pull Resources with a certain tag(s). To accomplish this, enter the tag ID number. To filter with multiple tags, separate each ID number by a comma. 
-   * **Default:** Pulls posts from every category. 
+- `ignore_sticky_posts` --> Choose whether or not your display will include sticky posts or not.  
+   * **Default:** `false` - By default the dispaly _will_ include sticky posts in the display.
    * **All Options:** 
-      * (VARIES) - This value depends on the tags on your website.
+      * `true` - Remove sticky posts from your display of resources.
+      * `false` - Keep sticky posts in your display of resources.
 - `posts_per_page` --> Change how many posts are displayed with the shortcode. 
    * **Default:** `5` - By default the display will display the 5 latest resources.
    * **All Options**:** 
-      * `Any Integer` - Your integer will determine how many posts are displayed
+      * `Any Integer (greater than 0)` - Your integer will determine how many posts are displayed
       * `-1` - Display all resources.
+- `offset` --> Choose whether the display skips a certain number of posts that do not need to be displayed.
+   * **Default:** `0` - By default the display will _not_ offset or skip any posts
+   * **All Options:** 
+      * `Any Integer (greater than 0)` - Your integer will determine how many posts are displayed
+   * **_NOTE_** - If you have `posts_per_page` set to `-1` then no matter how many posts you offset, every post will still be displayed.    
 - `order` --> Choose whether the resources in your display are ordered in ascending or descending order. 
    * **Default:** `ASC` - By default the display will order your posts in an ascending order.
    * **All Options:** 
@@ -67,11 +73,15 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **Default:** `maw-resources` - By default the display will order posts from the maw-resources post type.
    * **All Options:** 
       * (VARIES) - You can use this field to pull in different custom post types.      
+- `tag` --> Filter your display to only pull Resources with a certain tag(s). To accomplish this, enter the tag ID number. To filter with multiple tags, separate each ID number by a comma. 
+   * **Default:** Pulls posts from every category. 
+   * **All Options:** 
+      * (VARIES) - This value depends on the tags on your website.      
  
 #### Examples
 - `[maw_resources]` - This is the deault shortcode. It will pull in the 5 latest Resources with any category or tag.
 - `[maw_resources num="-1" orderby="post-date" order="DESC"]` - This shortcde will pull in every resource in the system, and order in by the date of their post in a descending order.
- 
+- `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcde will pull in every resource with the category whose IDs are 23 and 24, order them in ascending order by their post-date.
 
 ## Frequently Asked Questions
 
