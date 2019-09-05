@@ -1,15 +1,4 @@
 <?php
-/*
- * Plugin Name: MAW-Resources
- * Plugin URI: https://thetechsurge.com/
- * Description: A plugin to create a custom post type to display resources on your website.
- * Author: Michael Weiner
- * Author URI: https://thetechsurge.com/
- * Version: 0.1
- * License: GPL2+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- */
-
 // Exit plugin if it is being accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
