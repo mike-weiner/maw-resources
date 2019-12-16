@@ -11,6 +11,8 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html <br>
 
 This Wordpress plugin creates a custom post-type called "Resources" to make displaying PDF, PPTX, DOCX, and more file types easy to organize and display for users to read.
 
+[![Build Status](https://travis-ci.com/mike-weiner/maw-resources.svg?branch=master)](https://travis-ci.com/mike-weiner/maw-resources)
+
 ## Description
 
 This plugin creates a custom post-type called "Resources" to make displaying PDF, PPTX, DOCX, and more file types easy to organize, add publisher/metadata for each resource, and display them for users to read.
