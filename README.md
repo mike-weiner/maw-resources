@@ -1,4 +1,6 @@
 # maw-resources
+[![Build Status](https://travis-ci.com/mike-weiner/maw-resources.svg?branch=master)](https://travis-ci.com/mike-weiner/maw-resources)
+
 Contributors: [vikings412](https://profiles.wordpress.org/vikings412/) <br>
 Donate Link: https://paypal.me/michaelw13?locale.x=en_US <br>
 Tags: custom post-tyope, resources <br>
@@ -10,8 +12,6 @@ License: GPLv2 or later <br>
 License URI: https://www.gnu.org/licenses/gpl-2.0.html <br>
 
 This Wordpress plugin creates a custom post-type called "Resources" to make displaying PDF, PPTX, DOCX, and more file types easy to organize and display for users to read.
-
-[![Build Status](https://travis-ci.com/mike-weiner/maw-resources.svg?branch=master)](https://travis-ci.com/mike-weiner/maw-resources)
 
 ## Description
 
