@@ -6,5 +6,5 @@ php:
     - '7.2'
     - '7.3'
     - '7.4'
-before_script:
-  - '! find . -type f -name "*.php" -exec php -d error_reporting=32767 -l {} \; 2>&1 >&- | grep "^"'
+script:
+  php -l maw-plugin.php
