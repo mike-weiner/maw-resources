@@ -9,8 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * START: CMB2
  *
  */
-function maw_cmb2_metaboxes_initialize()
-{
+function maw_cmb2_metaboxes_initialize() {
+    global $post;
+    $author_id=$post->post_author; // Store current post's Author ID#
+    $user_id = wp_get_current_user(); // Store current user's ID#
+
     // Establish prefix to use for all fields
     $maw_prefix = 'maw-';
 
@@ -36,6 +39,7 @@ function maw_cmb2_metaboxes_initialize()
         'type' => 'text_date_timestamp',
         'attributes'  => array(
             'required'    => 'required',
+            'disabled'    => ($author_id == $user_id), // Disable field if current user is not originator of resource
         ),
     ) );
 

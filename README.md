@@ -4,8 +4,8 @@
 Contributors: [vikings412](https://profiles.wordpress.org/vikings412/) <br>
 Donate Link: https://paypal.me/michaelw13?locale.x=en_US <br>
 Tags: custom post-tyope, resources <br>
-Requires at least: 4.6 <br>
-Tested up to: 5.2.2 <br>
+Requires at least: 4.9 <br>
+Tested up to: 5.4 <br>
 Stable tag: 2.0 <br>
 Requires PHP: 5.6 <br>
 License: GPLv2 or later <br>
