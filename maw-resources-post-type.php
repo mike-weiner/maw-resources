@@ -13,15 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 function maw_resources_custom_post_type() {
 $supports = array(
-'title', // Post title
-//'editor', // Post content
-'author', // Post author
-//'thumbnail', // Featured images
-//'excerpt', // Post excerpt
-'custom-fields', // Custom fields
-//'comments', // Post comments
-//'revisions', // Post revisions
-//'post-formats', // Post formats
+    'title', // Post title
+    //'editor', // Post content
+    'author', // Post author
+    //'thumbnail', // Featured images
+    //'excerpt', // Post excerpt
+    'custom-fields', // Custom fields
+    //'comments', // Post comments
+    //'revisions', // Post revisions
+    //'post-formats', // Post formats
 );
 
 $labels = array(
