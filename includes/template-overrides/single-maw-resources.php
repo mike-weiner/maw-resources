@@ -34,7 +34,7 @@ $maw_publisher_url = get_post_meta( get_the_ID(), 'maw-resource-url', true );
                 <?php if($maw_publisher_name_text != "") { ?>
 
                     <div id="maw-publisher-thank-you" style="width=100%; background:#f2f2f2; padding:10px;">
-                        <p style="text-align: center; font-weight:bold;"><i>A special thank you to <?php echo esc_html( $maw_publisher_name_text ); ?> as the original publisher of this resource.</i></p>
+                        <p style="text-align: center;">A special thank you to <?php echo esc_html( $maw_publisher_name_text ); ?> as the original publisher of this resource.</p>
                     </div>
                 
                 <?php } ?>
