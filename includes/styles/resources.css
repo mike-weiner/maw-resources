@@ -1,3 +1,7 @@
+/*-----------------------------------------------------------------------------------*/
+/* maw-resources post-type display */
+/*-----------------------------------------------------------------------------------*/
+
 .maw_container {
     width: 100%;
     margin: 0 0 30px;
@@ -54,6 +58,36 @@
 
 .maw_clear {
     clear: both;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* single-maw-resources post template */
+/*-----------------------------------------------------------------------------------*/
+
+#maw-post-content {
+    padding: 4em;
+}
+
+#maw-post-title-meta {
+    margin-bottom: 1em;
+}
+
+#maw-post-content-description {
+    margin-bottom: 1em;
+}
+
+#maw-post-link {
+    margin-bottom: 1em;
+}
+
+#maw-publisher-thank-you {
+    width: 100%; 
+    background:#f2f2f2; 
+    padding:10px;
+}
+
+#maw-publisher-thank-you-text {
+    text-align: center;
 }
 
 /*-----------------------------------------------------------------------------------*/
