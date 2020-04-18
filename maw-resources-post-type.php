@@ -45,7 +45,7 @@ function maw_resources_custom_post_type() {
         'public' => true,
         'hierarchical' => true,
         'exclude_from_search' => false,
-        'publicly_queryable' => false, // Set this to be false to hide the single and archive page
+        'publicly_queryable' => true, // Set this to be false to hide the single and archive page
         'show_ui' => true,
         'show_in_menu' => true,
         'supports' => $supports,

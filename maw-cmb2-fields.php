@@ -11,7 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function maw_cmb2_metaboxes_initialize() {
     global $post;
-    $author_id=$post->post_author; // Store current post's Author ID#
+    
+    $author_id = $post->post_author; // Store current post's Author ID#
     $user_id = wp_get_current_user(); // Store current user's ID#
 
     // Establish prefix to use for all fields
