@@ -1,11 +1,11 @@
 <?php
 /*
- * Plugin Name: MAW-Resources
- * Plugin URI: https://thetechsurge.com/
+ * Plugin Name: MAW Resources
+ * Plugin URI: https://www.michaelweiner.org/
  * Description: A plugin to create a custom post type to display resources on your website.
  * Author: Michael Weiner
- * Author URI: https://thetechsurge.com/
- * Version: 0.1
+ * Author URI: https://www.michaelweiner.org/
+ * Version: 1.0
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */

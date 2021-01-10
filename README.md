@@ -1,13 +1,11 @@
 # maw-resources
-[![Build Status](https://travis-ci.com/mike-weiner/maw-resources.svg?branch=master)](https://travis-ci.com/mike-weiner/maw-resources)
-
 Contributors: [vikings412](https://profiles.wordpress.org/vikings412/) <br>
 Donate Link: https://paypal.me/michaelw13?locale.x=en_US <br>
-Tags: custom post-tyope, resources <br>
-Requires at least: 4.9 <br>
-Tested up to: 5.4 <br>
-Stable tag: 2.0 <br>
-Requires PHP: 5.6 <br>
+Tags: custom post-type, resources <br>
+Requires at least: 5.6 <br>
+Tested up to: 5.6 <br>
+Stable tag: 1.0 <br>
+Requires PHP: 7.0 <br>
 License: GPLv2 or later <br>
 License URI: https://www.gnu.org/licenses/gpl-2.0.html <br>
 
@@ -30,9 +28,9 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the Plugins panel in the WordPress administration area.
 
 ## Display
-This plugin will includes a display for your new custom `Resources` post-type. Below is an example of what that dislay will look like on any page or post. To learn how to use a shortcode to create your own display, [view the shortcode section below.](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes)
+This plugin will includes a display for your new custom `Resources` post-type. Below is an example of what that display will look like on any page or post. To learn how to use a shortcode to create your own display, [view the shortcode section below.](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes)
 
-| Nane                                            | Link          |  
+| Name                                            | Link          |  
 |-------------------------------------------------|---------------|
 | Resource Post Name #1<br> _--Published By: Lorem_ <br>Description of the resource.| View Resource | 
 | Resource Post Name #2<br> _--Published By: Lorem_ <br>Description of the resource.| View Resource |
@@ -41,7 +39,7 @@ This plugin will includes a display for your new custom `Resources` post-type. B
 ## Shortcodes
 
 ### Quick Start
-To quickly get started, use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. To see more complex exmaples, read the shortcode modifiers below, or [view our additional examples.](https://github.com/mike-weiner/maw-resources#examples) 
+To quickly get started, use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. To see more complex examples, read the shortcode modifiers below, or [view our additional examples.](https://github.com/mike-weiner/maw-resources#examples) 
 
 ### Shortcode Modifiers
 
@@ -54,17 +52,17 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **All Options:** 
       * (VARIES) - This value depends on the tags on your website.
 - `ignore_sticky_posts` --> Choose whether or not your display will include sticky posts or not.  
-   * **Default:** `false` - By default the dispaly _will_ include sticky posts in the display.
+   * **Default:** `false` - By default the display _will_ include sticky posts in the display.
    * **All Options:** 
       * `true` - Remove sticky posts from your display of resources.
       * `false` - Keep sticky posts in your display of resources.
 - `mw_show_resource_author` - Choose whether or not to display your resource's publisher within your display (This pulls in the value from the "Resource Publisher" field.
-  * **Default:** By default, the display will show your resources' publsihers.
+  * **Default:** By default, the display will show your resources' publishers.
   * **All Options:**
     * `true` - Show the resource publisher in the display.
     * `false` - Do _not_ show the resource publisher in the display.
 - `mw_show_resource_description` - Choose whether or not to display your resource's description within your display.
-  * **Default:** By default, the display will show your resource's descrption (if one is present).
+  * **Default:** By default, the display will show your resource's description (if one is present).
   * **All Options:**
     * `true` - Show the post author in the display.
     * `false` - Do _not_ show the post author in the display.    
@@ -87,7 +85,7 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
    * **All Options:** 
       * `ASC` - Order posts in an ascending order
       * `DESC` - Order posts in a descending order
-- `orderby` --> Choose what metric the resources in your display are sorted by. **Note:** You can include more than one oderby prarameter as a fallback(s). When using more than one orderby parameter, separate each by a sapce. For example: `orderby="title post-date"` would sort posts by title and then if a post did not have a title it would sort by post-date. 
+- `orderby` --> Choose what metric the resources in your display are sorted by. **Note:** You can include more than one orderby parameter as a fallback(s). When using more than one orderby parameter, separate each by a space. For example: `orderby="title post-date"` would sort posts by title and then if a post did not have a title it would sort by post-date. 
    * **Default:** `title` - By default the display will order posts by their title
    * **All Options:** 
       * `title` - Order by the title of your resource(s).
@@ -110,11 +108,11 @@ This plugin uses a shortcode with *several* modifiers to display the posts withi
       * (VARIES) - This value depends on the tags on your website.      
  
 ### Examples
-- `[maw_resources]` - This is the deault shortcode. It will pull in the 5 latest resources with any category or tag.
-- `[maw_resources num="-1" orderby="post-date" order="DESC"]` - This shortcde will pull in every resource in the system, and order in by the date of their post in a descending order.
-- `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcde will pull in every resource with the category whose IDs are 23 and 24 and order them in ascending order by their post-date.
+- `[maw_resources]` - This is the default shortcode. It will pull in the 5 latest resources with any category or tag.
+- `[maw_resources num="-1" orderby="post-date" order="DESC"]` - This shortcode will pull in every resource in the system, and order in by the date of their post in a descending order.
+- `[maw_resources num="-1" orderby="post-date" cat="23, 24"]` - This shortcode will pull in every resource with the category whose IDs are 23 and 24 and order them in ascending order by their post-date.
 - `[maw_resources orderby="meta_value title"]` - This shortcode will pull in 5 of the latest resources and will order them by the value of the metadata field (_Publish Date of Resource_) and then by the title of the resource (if several resources either have the same date or no date at all), and all of the posts will be displayed in ascending order.
-- `[maw_resources num="-1" maw_show_resource_author="false" maw_show_resource_description="false"]` - This shorcode will pull in all of your resources no matter their category or tag, and it will _not_ show the author **or** the description in the display. The posts will be ordered by the title of your resources in ascending order.
+- `[maw_resources num="-1" maw_show_resource_author="false" maw_show_resource_description="false"]` - This shortcode will pull in all of your resources no matter their category or tag, and it will _not_ show the author **or** the description in the display. The posts will be ordered by the title of your resources in ascending order.
 - `[maw_resources num="-1" meta_key="maw-resource-publish-date" orderby="meta_value title" order="asc"]` - This shortcode will display all of your resources and order them by the publication date of the publication (this is one of the fields you fill out) in an ascending order.
 
 ## Frequently Asked Questions
@@ -138,9 +136,9 @@ Yes! You will need to use the `post-type` shortcode modifier. You can pull in on
 ## Changelog
 
 ### 1.0 🎉
-* Welcome to the maiden release of maw-resources! We hope you love what you find!
+* Welcome to the maiden release of MAW Resources! We hope you love what you find!
 
 ### 1.0 🎉
-* Relased On - xx/xx/xxxx
+* Released On - 01/10/2021
 * Initial release
 
