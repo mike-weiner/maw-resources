@@ -17,7 +17,6 @@ This plugin creates a custom post-type called "Resources" to make displaying PDF
 
 ### Things to Note
 - For this plugin to work, you need to have [CMB2](https://github.com/CMB2/CMB2) installed on your website! You can install it using [Wordpress](https://wordpress.org/plugins/cmb2/) or you can download a ZIP file from [Github](https://github.com/CMB2/CMB2).
-- This custom post-type does _not_ have a single or archive page layout. The only way to display these posts is [using the shortcode](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes) that pulls in a display that can be used on _any_ page or post.
 - There is no standard WYSIWYG editor. There are only custom fields that you can fill out that will be used in the display of your resource post-types.
 
 ## Installation
