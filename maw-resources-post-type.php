@@ -101,7 +101,7 @@ function maw_resources_post_type_disable_comments( $post_id ) {
         return false;
     }
 }
-add_filter( 'comments_open', 'my_prefix_comments_open', 10 , 1 );
+add_filter( 'comments_open', 'maw_resources_post_type_disable_comments', 10 , 1 );
 /*
 *
 * END: Disable comments on 'maw-resources' post type
