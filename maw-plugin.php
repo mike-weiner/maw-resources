@@ -43,10 +43,10 @@ add_action( 'wp_enqueue_scripts', 'maw_custom_resources_stylesheet' );
 
 /*
  *
- * START: Include Custom Page Layout for the Resources Post Type
+ * START: Include Custom Single Page Layout for the Resources Post Type
  *
  */
-function maw_resources_page_template( $maw_resources_single_template ) {
+function maw_resources_single_page_template( $maw_resources_single_template ) {
     global $post;
 
     if ( $post -> post_type == 'maw-resources') {
@@ -54,9 +54,53 @@ function maw_resources_page_template( $maw_resources_single_template ) {
     }
     return $maw_resources_single_template;
 }
-add_filter( 'single_template', 'maw_resources_page_template' );
+add_filter( 'single_template', 'maw_resources_single_page_template' );
+
+
 /*
  *
- * END: Include Custom Page Layout for the Resources Post Type
+ * END: Include Custom Single Page Layout for the Resources Post Type
+ *
+ */
+
+
+/*
+ *
+ * START: Include Custom Archive Page Layout for the Resources Post Type
+ *
+ */
+function maw_resources_archive_page_template( $maw_resources_single_template ) {
+    global $post;
+
+    if ( $post -> post_type == 'maw-resources') {
+        $maw_resources_archive_template = plugin_dir_path(__FILE__) . '/includes/template-overrides/archive-maw-resources.php';
+    }
+    return $maw_resources_archive_template;
+}
+add_filter( 'archive_template', 'maw_resources_archive_page_template' );
+/*
+ *
+ * END: Include Custom Archive Page Layout for the Resources Post Type
+ *
+ */
+
+
+/*
+ *
+ * START: Sort Resources By Date Custom Field on Archive Page
+ *
+ */
+function sort_by_date_on_archive_for_mw_resources( $query ) {
+    if ( is_post_type_archive( 'maw-resources') ) {
+       $query->set('meta_key', 'maw-resource-publish-date');
+       $query->set('orderby', 'meta_value');
+       $query->set('order', 'DESC');
+       return;
+    }
+ }
+ add_filter( 'pre_get_posts', 'sort_by_date_on_archive_for_mw_resources', 1);
+/*
+ *
+ * END: Include Custom Archive Page Layout for the Resources Post Type
  *
  */

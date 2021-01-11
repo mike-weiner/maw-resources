@@ -42,4 +42,6 @@ $maw_publisher_url = get_post_meta( get_the_ID(), 'maw-resource-url', true );
     </div>
 
 <?php
+wp_reset_postdata(); // Clear the query data for future queries
+
 get_footer();
