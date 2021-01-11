@@ -9,6 +9,7 @@ get_header();
                 <?php
                 echo '<div class="mw-archive-header">';
                 echo '<center><h1> Archive: Resources</h1></center>';
+                echo '<center><p>Below are the 25 most recently published resources.</p></center>';
                 echo '<hr>';
                 echo '<p></p></div>';
 

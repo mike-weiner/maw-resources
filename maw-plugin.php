@@ -104,3 +104,22 @@ function sort_by_date_on_archive_for_mw_resources( $query ) {
  * END: Include Custom Archive Page Layout for the Resources Post Type
  *
  */
+
+
+/*
+ *
+ * START: Set Posts Per Page on Archive Template for maw-resources
+ *
+ */
+function post_per_archive_page_maw_resources( $query ) {
+    if( $query->is_main_query() && !is_admin() && is_post_type_archive( 'maw-resources' ) ) {
+		$query->set( 'posts_per_page', '25' );
+	}
+
+}
+add_action( 'pre_get_posts', 'post_per_archive_page_maw_resources' );
+/*
+ *
+ * END: Set Posts Per Page on Archive Template for maw-resources
+ *
+ */
