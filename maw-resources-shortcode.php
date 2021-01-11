@@ -55,7 +55,7 @@ function maw_resources_posts_shortcode($atts) {
     /*
     * Begin HTML Output
     */
-    $maw_output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Name</div><div class="maw_link">Link</div><br class="maw_clear"></div>';
+    $maw_output .= '<div class="maw_container"><div class="maw_header"><div class="maw_title">Resource</div><div class="maw_link">Link</div><br class="maw_clear"></div>';
 
         while( $maw_query->have_posts() ){
         $maw_query->the_post();

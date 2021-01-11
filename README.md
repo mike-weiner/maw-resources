@@ -23,8 +23,9 @@ This plugin creates a custom post-type called "Resources" to make displaying PDF
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the plugin files to the plugins directory, or install the plugin through the WordPress Plugins panel directly.
-2. Activate the plugin through the Plugins panel in the WordPress administration area.
+1. Install and Activate the [CMB2 plugin](https://wordpress.org/plugins/cmb2/) from the WordPress plugin repository. 
+2. Download a .zip of this Github repository and upload the .zip to the plugins directory, or install the plugin through the WordPress Plugins panel directly.
+3. Activate the plugin through the Plugins panel in the WordPress administration area.
 
 ## Display
 This plugin will includes a display for your new custom `Resources` post-type. Below is an example of what that display will look like on any page or post. To learn how to use a shortcode to create your own display, [view the shortcode section below.](https://github.com/mike-weiner/maw-resources/blob/master/README.md#shortcodes)
