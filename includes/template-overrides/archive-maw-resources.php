@@ -14,7 +14,7 @@ get_header();
                 <?php
                 echo '<div class="mw-archive-header">';
                 echo '<center><h1> Archive: Resources</h1></center>';
-                echo '<center><p>Below are the 25 most recently published resources.</p></center>';
+                echo '<center><p>Below is an archive of published resources sorted by publish date of the resource.</p></center>';
                 echo '<hr>';
                 echo '<p></p></div>';
 
@@ -30,7 +30,27 @@ get_header();
 
                     echo '<p></p></article>';
 
-                    endwhile; 
+                    endwhile;
+
+                    echo '<hr />';
+
+                    echo '<div class="maw-resources-pagination">';
+                    echo '<div class="row">';
+                    echo '<div class="small-12 columns">';
+                    
+                    the_posts_pagination( array(
+                        'mid_size'  => 2,
+                        'prev_text' => 'Previous',
+                        'next_text' => 'Next',
+                    ) );
+                    
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+
+                    else: 
+                    echo '<p>Sorry, no posts matched your criteria.</p>';
+
                 endif;
 
                 wp_reset_postdata(); // Clear the query data for future queries
