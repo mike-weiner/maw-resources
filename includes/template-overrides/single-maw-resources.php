@@ -1,4 +1,9 @@
 <?php
+// Exit plugin if it is being accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 get_header();
 
 $maw_publisher_name_text = get_post_meta( get_the_ID(), 'maw-resource-publisher', true );

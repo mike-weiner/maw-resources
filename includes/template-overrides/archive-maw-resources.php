@@ -1,4 +1,9 @@
 <?php
+// Exit plugin if it is being accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 get_header();
 ?>
 
