@@ -90,6 +90,88 @@ add_filter('pre_get_posts', 'maw_sort_resources_post_by_title');
 
 
 /*
+ *
+ * START: Sort Resources By Date Custom Field on Archive Page
+ *
+ */
+function sort_by_date_on_archive_for_mw_resources( $query ) {
+    if ( is_post_type_archive( 'maw-resources') ) {
+       $query->set('meta_key', 'maw-resource-publish-date');
+       $query->set('orderby', 'meta_value');
+       $query->set('order', 'DESC');
+       return;
+    }
+ }
+ add_filter( 'pre_get_posts', 'sort_by_date_on_archive_for_mw_resources', 1);
+/*
+ *
+ * END: Include Custom Archive Page Layout for the Resources Post Type
+ *
+ */
+
+
+/*
+ *
+ * START: Set Posts Per Page on Archive Template for maw-resources
+ *
+ */
+function post_per_archive_page_maw_resources( $query ) {
+    if( $query->is_main_query() && !is_admin() && is_post_type_archive( 'maw-resources' ) ) {
+		$query->set( 'posts_per_page', '25' );
+	}
+
+}
+add_action( 'pre_get_posts', 'post_per_archive_page_maw_resources' );
+/*
+ *
+ * END: Set Posts Per Page on Archive Template for maw-resources
+ *
+ */
+
+
+/*
+ *
+ * START: Include Custom Single Page Layout for the Resources Post Type
+ *
+ */
+function maw_resources_single_page_template( $maw_resources_single_template ) {
+    global $post;
+
+    if ( $post -> post_type == 'maw-resources') {
+        $maw_resources_single_template = plugin_dir_path(__FILE__) . '/includes/template-overrides/single-maw-resources.php';
+    }
+    return $maw_resources_single_template;
+}
+add_filter( 'single_template', 'maw_resources_single_page_template' );
+/*
+ *
+ * END: Include Custom Single Page Layout for the Resources Post Type
+ *
+ */
+
+
+/*
+ *
+ * START: Include Custom Archive Page Layout for the Resources Post Type
+ *
+ */
+function maw_resources_archive_page_template( $maw_resources_single_template ) {
+    global $post;
+
+    if ( $post -> post_type == 'maw-resources') {
+        $maw_resources_archive_template = plugin_dir_path(__FILE__) . '/includes/template-overrides/archive-maw-resources.php';
+    }
+    return $maw_resources_archive_template;
+}
+add_filter( 'archive_template', 'maw_resources_archive_page_template' );
+/*
+ *
+ * END: Include Custom Archive Page Layout for the Resources Post Type
+ *
+ */
+
+
+/*
 *
 * START: Disable comments on 'maw-resources' post type
 *

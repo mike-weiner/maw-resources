@@ -15,8 +15,6 @@ function maw_cmb2_metaboxes_initialize() {
     $author_id = $post->post_author; // Store current post's Author ID#
     $user_id = wp_get_current_user(); // Store current user's ID#
 
-    $maw_manager_user_id = array('1'); // Array to store User IDs that can edit restricted fields
-
     // Establish prefix to use for all fields
     $maw_prefix = 'maw-';
 
@@ -42,7 +40,6 @@ function maw_cmb2_metaboxes_initialize() {
         'type' => 'text_date_timestamp',
         'attributes'  => array(
             'required'    => 'required',
-            'disabled'    => (in_array($user_id, $maw_manager_user_id) ? true : false), // Disable field if current user is not in array of user IDs with clearance
         ),
     ) );
 
@@ -55,6 +52,9 @@ function maw_cmb2_metaboxes_initialize() {
         'id' => $maw_prefix . 'resource-url',
         'type' => 'text_url', // Set type of field
         'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
+        'attributes'  => array(
+            'required'    => 'required',
+        ),
     ));
 
     /*

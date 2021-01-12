@@ -6,20 +6,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$maw_publisher_name_text = get_post_meta( get_the_ID(), 'maw-resource-publisher', true );
-$maw_publication_publish_date_text = get_post_meta( get_the_ID(), 'maw-resource-publish-date', true );
-$maw_resource_description_text = get_post_meta( get_the_ID(), 'maw-resource-description', true );
-$maw_publisher_url = get_post_meta( get_the_ID(), 'maw-resource-url', true );
+$maw_publisher_name_text = esc_html( get_post_meta( get_the_ID(), 'maw-resource-publisher', true ) );
+$maw_publication_publish_date_text = esc_html( get_post_meta( get_the_ID(), 'maw-resource-publish-date', true ) );
+$maw_resource_description_text = esc_html( get_post_meta( get_the_ID(), 'maw-resource-description', true ) );
+$maw_publisher_url = esc_html( get_post_meta( get_the_ID(), 'maw-resource-url', true ) );
 ?>
 
 <div class="container">
     <div id="content-area" class="clearfix">
         <div id="maw-post-content">
             <div id="maw-post-title-meta">
-                <h2><?php echo get_the_title( $post_id ); ?></h2>
+                <h2><?php echo esc_html( get_the_title($post_id) ); ?></h2>
 
                 <p id="maw-post-resource-date-field">
-                    <?php echo date('F j, Y', $maw_publication_publish_date_text ); ?>
+                    <?php echo esc_html( date('F j, Y', $maw_publication_publish_date_text) ); ?>
                 </p>
             </div>
 

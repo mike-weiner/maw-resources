@@ -64,12 +64,12 @@ function maw_resources_posts_shortcode($atts) {
         /*
         * Get the various resource post attributes
         */
-        $maw_resource_id = get_the_ID(); // Get the id of the resource
-        $maw_resource_title = get_the_title(); // Get and store the title of the resource
-        $maw_resource_author = get_post_meta($maw_resource_id, 'maw-resource-publisher', true); // Store the resource's publishing entity entered by the user
-        $maw_resource_date = get_post_meta($maw_resource_id, 'maw-publish-date', true); // Store the resource's publication date entered by the user
-        $maw_resource_url = get_post_meta($maw_resource_id, 'maw-resource-url', true); // Store the resource's URL
-        $maw_resource_description = get_post_meta($maw_resource_id, 'maw-resource-description', true); // Store the resource's description entered by the user
+        $maw_resource_id = esc_html( get_the_ID() ); // Get the id of the resource
+        $maw_resource_title = esc_html( get_the_title() ); // Get and store the title of the resource
+        $maw_resource_author = esc_html( get_post_meta($maw_resource_id, 'maw-resource-publisher', true) ); // Store the resource's publishing entity entered by the user
+        $maw_resource_date = esc_html( get_post_meta($maw_resource_id, 'maw-publish-date', true) ); // Store the resource's publication date entered by the user
+        $maw_resource_url = esc_html( get_post_meta($maw_resource_id, 'maw-resource-url', true) ); // Store the resource's URL
+        $maw_resource_description = esc_html( get_post_meta($maw_resource_id, 'maw-resource-description', true) ); // Store the resource's description entered by the user
 
         /*
         * Finish HTML Output
@@ -89,7 +89,7 @@ function maw_resources_posts_shortcode($atts) {
                         }
 
                         if ($maw_resource_url != null) { // Check to see if the resource has a URL, and if so display it
-                        $maw_output .= '</div><div class="maw_link"><a href="'. get_post_meta($maw_resource_id, 'maw-resource-url', true) .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
+                        $maw_output .= '</div><div class="maw_link"><a href="'. $maw_resource_url .'" title="View Resource" target="_blank">View Resource</a><br></div><br class="maw_clear"></div>';
                 } else {
                 $maw_output .= '</div><br class="maw_clear"></div>';
         }

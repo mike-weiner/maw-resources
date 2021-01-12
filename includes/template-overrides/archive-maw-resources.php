@@ -18,52 +18,47 @@ get_header();
                 <p></p>
             </div>
 
-            <?php
+            <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-                if(have_posts()) : while(have_posts()) : the_post();
-                           
-                    echo '<article>';
-                    echo '<a href=' . esc_html( get_permalink() ) . '>';
-                    the_title('<h2>', '</h2>');
-                    echo '</a>';
+                <article>
+                    <a href=" <?php echo esc_html( get_permalink() ); ?> ">
+                        <?php echo esc_html( the_title('<h2>', '</h2>') ); ?>
+                    </a>
 
-                    echo '<p class="mw-post-meta-date">';
-                    echo date('F j, Y', get_post_meta( get_the_ID(), 'maw-resource-publish-date', true ) );
-                    echo '</p>';
+                    <p class="mw-post-meta-date">
+                        <?php echo esc_html( date('F j, Y', get_post_meta( get_the_ID(), 'maw-resource-publish-date', true)) ); ?>
+                    </p>
 
-                    echo '<p></p>';
-                    echo '</article>';
+                    <p></p>
 
-                endwhile;
-            
-            ?>
-            
-            <hr />
+                </article>
 
-            <div class="maw-resources-pagination">
-                <div class="row">
-                    <div class="small-12 columns">
+                <?php endwhile; ?>
 
-                        <?php
+                <hr />
 
-                            the_posts_pagination( array(
-                                'mid_size'  => 2,
-                                'prev_text' => 'Previous',
-                                'next_text' => 'Next',
-                            ) );
+                <div class="maw-resources-pagination">
+                    <div class="row">
+                        <div class="small-12 columns">
 
-                        ?>
+                            <?php
 
+                                the_posts_pagination( array(
+                                    'mid_size'  => 2,
+                                    'prev_text' => 'Previous',
+                                    'next_text' => 'Next',
+                                ) );
+
+                            ?>
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <?php else: ?>
-
-                <p>Sorry, no posts matched your criteria.</p>
-
+                <?php else: ?>
+                    <p>Sorry, no posts matched your criteria.</p>
             <?php endif; ?>
-
+            
         </div>
     </div>
 </div>
