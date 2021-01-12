@@ -39,7 +39,7 @@ This plugin will includes a display for your new custom `Resources` post-type. B
 ## Shortcodes
 
 ### Quick Start
-To quickly get started, use `[maw_resources]` on any page or post to quickly display 5 of your most recent resources for visitors to see. To see more complex examples, read the shortcode modifiers below, or [view our additional examples.](https://github.com/mike-weiner/maw-resources#examples) 
+To quickly get started, use `[maw_resources]` on any page or post to quickly display all of your published resources for visitors to see. It will order the resources by the specified publish date and then by title. To see more complex examples, read the shortcode modifiers below, or [view our additional examples.](https://github.com/mike-weiner/maw-resources#examples) 
 
 ### Shortcode Modifiers
 
