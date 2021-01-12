@@ -19,7 +19,7 @@ function maw_resources_posts_shortcode($atts) {
         'maw_show_resource_description' => true,
         'meta_key' => 'maw-resource-publish-date',
         'num'     => '25',
-        'order'   => 'ASC',
+        'order'   => 'DESC',
         'orderby' => 'meta_value title',
         'offset'  => '',
         'page_id' => '',
