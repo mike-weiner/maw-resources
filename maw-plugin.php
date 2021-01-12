@@ -55,8 +55,6 @@ function maw_resources_single_page_template( $maw_resources_single_template ) {
     return $maw_resources_single_template;
 }
 add_filter( 'single_template', 'maw_resources_single_page_template' );
-
-
 /*
  *
  * END: Include Custom Single Page Layout for the Resources Post Type
